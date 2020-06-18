@@ -6,6 +6,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 
 import template from "../template";
+import userRoutes from './routes/user.routes'
 
 const app = express();
 app.use(bodyParser.json());
