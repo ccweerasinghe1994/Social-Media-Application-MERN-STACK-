@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-
+//The mongoose.Schema() function takes a schema definition object as a parameter to
+// generate a new Mongoose schema object that will specify the properties or structure
+// of each document in a collection.
 const UserSchema = new mongoose.Schema({
 
     name: {

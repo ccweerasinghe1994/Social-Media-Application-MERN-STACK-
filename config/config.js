@@ -1,3 +1,7 @@
+
+//  we will define some server-side configuration-related
+// variables that will be used in the code but should not be hardcoded as a best practice,
+// as well as for security purposes
 const config = {
     env: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 3000,
