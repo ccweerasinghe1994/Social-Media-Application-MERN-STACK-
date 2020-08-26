@@ -63,6 +63,10 @@ const read = (req, res) => {
 
     return res.json(req.profile)
 }
+
+
+
+
 //The update function retrieves the user details from req.profile and then uses the
 // lodash module to extend and merge the changes that came in the request body to
 // update the user data. Before saving this updated user to the database, the updated
@@ -79,14 +83,31 @@ const update = async (req, res, next) => {
         await user.save();
         user.hashed_password = undefined;
         user.salt = undefined;
-        return res.json(user)
+        res.json(user)
     } catch (err) {
         return res.status('400').json({
             error: errorHandler.getErrorMessage(err)
         })
     }
 }
-const remove = (req, res, next) => {
+
+
+//The remove function retrieves the user from req.profile and uses the remove()
+// query to delete the user from the database. On successful deletion, the requesting
+// client is returned the deleted user object in the response.
+const remove = async (req, res, next) => {
+    try{
+        let user = req.profile;
+        let deleteUser = await user.remove();
+        deleteUser.hashed_password = undefined;
+        deleteUser.salt = undefined;
+        res.json(deleteUser)
+
+    }catch (err) {
+        return res.json({
+            error:errorHandler.getErrorMessage(err)
+        })
+    }
 }
 
 export default {
