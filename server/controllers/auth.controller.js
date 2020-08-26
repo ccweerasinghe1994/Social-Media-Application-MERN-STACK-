@@ -14,8 +14,9 @@ import config from "../../config/config";
 // received in req.body from the client.
 //If the password is successfully verified, the JWT module is used to generate a signed
 // JWT using a secret key and the user's _id value.
-const signin = async (req, res, next) => {
+const signin = async (req, res) => {
     try {
+
         let user = await User.findOne({"email": req.body.email})
         if (!user) {
             res.status('401').json({
@@ -29,7 +30,7 @@ const signin = async (req, res, next) => {
         }
 
         const token = jwt.sign({_id: user._id}, config.jwtSecret);
-        res.cookie('t', token, {expires: new Date() + 9999})
+        res.cookie('t', token, {expires: parseInt(new Date() + 9999)})
 
         return res.json({
             token,
@@ -38,10 +39,11 @@ const signin = async (req, res, next) => {
                 name: user.name,
                 email: user.email
             }
+
         })
     } catch (err) {
         return res.status('401').json({
-            error: 'could not sign in'
+            error: err
         })
     }
 };
