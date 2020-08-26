@@ -36,9 +36,7 @@ app.use(compression());
 app.use(helmet());
 app.use(cors());
 
-// app.get('/',userRoutes)
-app.get('/', (req, res) => {
-    res.status(200).send(template())
-})
+ app.get('/',userRoutes)
+
 
 export default app;
