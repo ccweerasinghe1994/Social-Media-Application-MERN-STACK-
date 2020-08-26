@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import crypto from 'crypto';
 //The mongoose.Schema() function takes a schema definition object as a parameter to
 // generate a new Mongoose schema object that will specify the properties or structure
 // of each document in a collection.
-const UserSchema = new mongoose.Schema({
+const UserSchema =  new mongoose.Schema({
 
     name: {
         type: String,
@@ -27,20 +28,23 @@ const UserSchema = new mongoose.Schema({
 
     hashed_password: {
         type: String,
-        required: 'Password is required'
+        required:'password is required'
+
     },
 
     salt: String
 
 })
 
-UserSchema
-    .virtual('password')
+UserSchema.virtual('password')
     .set(
         function (password) {
+
             this._password = password;
             this.salt = this.makeSalt();
             this.hashed_password = this.encryptPassword(password)
+
+
         }
     ).get(
     function () {
@@ -60,7 +64,7 @@ UserSchema.methods = {
     // from the plain-text password and a unique salt value using the crypto
     // module from Node
     encryptPassword: function (password) {
-        if (!password) return '';
+        if (!password) return "";
         try {
             //The crypto module provides a range of cryptographic
             // functionality, including some standard cryptographic hashing
@@ -69,7 +73,7 @@ UserSchema.methods = {
             // HMAC hash from the password text and salt pair.
             return crypto.createHmac('sha1', this.salt).update(password).digest("hex")
         } catch (error) {
-            return '';
+            return "";
         }
     },
     //makeSalt: This method generates a unique and random salt value using
@@ -84,7 +88,7 @@ UserSchema.path('hashed_password').validate(function (v) {
         this.invalidate('password', 'Password must be at least 6 characters.')
     }
     if (this.isNew && !this._password) {
-        this.invalidate('password', 'Password is required')
+        this.invalidate('password', 'Password  required')
     }
 }, null)
 export default mongoose.model('User', UserSchema)

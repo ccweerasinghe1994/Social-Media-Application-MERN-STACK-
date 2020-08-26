@@ -3,9 +3,11 @@ import extend from 'lodash/extend';
 import errorHandler from '../helpers/dbErrorHandler';
 
 const create = async (req, res) => {
-    const User = new User(req.body);
+
+
+    const user =  new User(req.body);
     try {
-        await User.save();
+        await user.save();
         return res.status(200).json(
             {
                 message: "Successfully signed up!"
