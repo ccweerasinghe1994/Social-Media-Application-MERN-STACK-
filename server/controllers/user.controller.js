@@ -5,7 +5,7 @@ import errorHandler from '../helpers/dbErrorHandler';
 const create = async (req, res) => {
 
 
-    const user =  new User(req.body);
+    const user = new User(req.body);
     try {
         await user.save();
         return res.status(200).json(
@@ -38,10 +38,10 @@ const userByID = async (req, res, next, id) => {
         // to the next relevant controller function. For example, if the original request was to
         // read a user profile, the next() call in userByID would go to the read controller
         // function, which is discussed next.
-        console.log("---------------------------------------start found the user")
+
 
         let user = await User.findById(id);
-      
+
         if (!user) {
             return res.status('400').json({
                 error: 'User not found'
@@ -68,9 +68,6 @@ const read = (req, res) => {
 
     return res.json(req.profile)
 }
-
-
-
 
 
 //The update function retrieves the user details from req.profile and then uses the
@@ -102,16 +99,16 @@ const update = async (req, res, next) => {
 // query to delete the user from the database. On successful deletion, the requesting
 // client is returned the deleted user object in the response.
 const remove = async (req, res, next) => {
-    try{
+    try {
         let user = req.profile;
         let deleteUser = await user.remove();
         deleteUser.hashed_password = undefined;
         deleteUser.salt = undefined;
         res.json(deleteUser)
 
-    }catch (err) {
+    } catch (err) {
         return res.json({
-            error:errorHandler.getErrorMessage(err)
+            error: errorHandler.getErrorMessage(err)
         })
     }
 }

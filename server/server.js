@@ -8,7 +8,7 @@ mongoose.connect(config.mongoUri
         useCreateIndex: true,
         useUnifiedTopology: true
     })
-mongoose.connection.on('error',()=>{
+mongoose.connection.on('error', () => {
     throw new Error(`unable to connect to database:${config.mongoUri}`)
 })
 import app from './express';

@@ -1,7 +1,7 @@
 import express from 'express';
 import authController from '../controllers/auth.controller';
 
-const router  = express.Router();
+const router = express.Router();
 
 //'/auth/signin': POST request to authenticate the user with their email
 // and password
