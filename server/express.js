@@ -31,7 +31,10 @@ import template from "../template";
 import devBundle from "./devBundle";
 //----------------------------------
 const app = express();
-devBundle.compile(app)
+
+devBundle.compile(app);
+
+
 //  configure the Express app
 // with bodyParser.json() and bodyParser.urlencoded({ extended:
 // true })
@@ -45,7 +48,9 @@ app.use(helmet());
 app.use(cors());
 
 
-
+app.get('/',(req,res)=>{
+    res.send(template());
+})
 app.use('/', authRoutes);
 app.use('/', userRoutes);
 app.use('/dist',express.static(path.join(CURRENT_WORKING_DIRECTORY,'/dist')))

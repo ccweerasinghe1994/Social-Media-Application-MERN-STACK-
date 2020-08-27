@@ -13,7 +13,7 @@ const config = {
     // to its original position in a source file to aid debugging.
     entry: [
         'webpack-hot-middleware/client?reload=true',
-        path.join(CURRENT_WORKING_DIR, 'client/main.js')
+        path.join(CURRENT_WORKING_DIR, 'client/Main.js')
     ],
     // this is where webpack start building
     output: {
@@ -27,7 +27,12 @@ const config = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
+            },
+            {
+                test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+                use: 'file-loader'
             }
+
         ]
     },
     plugins: [
