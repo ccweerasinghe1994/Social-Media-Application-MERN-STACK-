@@ -9,6 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "nodemon": "^2.0.4",
     "webpack": "^4.43.0",
@@ -25,6 +26,7 @@
     "helmet": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.19"
+    "mongoose": "^5.9.19",
+    "react-hot-loader": "^4.12.21"
   }
 }

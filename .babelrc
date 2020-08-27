@@ -3,12 +3,14 @@
     [
       "@babel/preset-env",
       {
-        // Setting targets.node to current instructs Babel to compile against the current
-        // version of Node
         "targets": {
           "node": "current"
         }
       }
-    ]
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel"
   ]
 }
