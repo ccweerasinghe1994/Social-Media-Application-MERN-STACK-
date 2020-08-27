@@ -3,6 +3,9 @@ import express from 'express';
 // complexities of parsing streamable request objects so that we can simplify
 // browser-server communication by exchanging JSON in the request body.
 
+import path from 'path';
+const CURRENT_WORKING_DIRECTORY = process.cwd();
+
 import bodyParser from 'body-parser';
 
 //helmet: Collection of middleware functions to help secure Express apps by
@@ -24,9 +27,11 @@ import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import template from "../template";
-
-
+//only in development
+import devBundle from "./devBundle";
+//----------------------------------
 const app = express();
+devBundle.compile(app)
 //  configure the Express app
 // with bodyParser.json() and bodyParser.urlencoded({ extended:
 // true })
@@ -39,12 +44,11 @@ app.use(compression());
 app.use(helmet());
 app.use(cors());
 
-// app.get('/', (req, res) => {
-//     res.status(200).send(template())
-// })
+
 
 app.use('/', authRoutes);
 app.use('/', userRoutes);
+app.use('/dist',express.static(path.join(CURRENT_WORKING_DIRECTORY,'/dist')))
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
         res.status(401).json({"error-------------->>>": err.name + ": " + err.message})
