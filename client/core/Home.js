@@ -1,8 +1,8 @@
-import react from 'react'
+import React from "react";
 import {makeStyles} from '@material-ui/core/styles'
 import {Card, CardContent, CardMedia, Typography} from '@material-ui/core';
-import homeImg from '../assets/jakob-owens-v2lS1ECeCOM-unsplash.jpg';
-import React from "react";
+import homeImg from '../assets/a.jpg';
+
 
 
 const useStyles = makeStyles(theme => ({
