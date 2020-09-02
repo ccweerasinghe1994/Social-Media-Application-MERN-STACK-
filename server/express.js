@@ -35,7 +35,8 @@ import template from "../template";
 
 const app = express();
 
-  devBundle.compile(app);
+devBundle.compile(app);
+
 
 
 //  configure the Express app
