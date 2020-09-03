@@ -6,8 +6,12 @@
   "scripts": {
     "dev": "nodemon",
     "build": "webpack --config webpack.config.client.production.js && webpack --mode=production --config webpack.config.server.js",
-    "run": "NODE_ENV=production node ./dist/server.generated.js"
+    "start": "SET NODE_ENV=production node ./dist/server.generated.js"
 
+  },
+  "engines": {
+    "node": "14.9.0",
+    "npm": "6.14.8"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
