@@ -52,7 +52,7 @@ export const User = () => {
                 {
                     users.map((item, i) => {
                         return (
-                            <Link to={"/users/" + item._id} key={i}>
+                            <Link to={"/user/" + item._id} key={i}>
                                 <ListItem button>
                                     <ListItemAvatar>
                                         <Avatar>
