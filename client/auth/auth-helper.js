@@ -31,3 +31,8 @@ const clearJwt = (cb) => {
     })
 
 }
+
+export {
+    signout,authenticate,clearJwt,isAuthenticated
+
+}
