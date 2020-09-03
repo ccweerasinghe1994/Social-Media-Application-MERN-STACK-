@@ -11,7 +11,7 @@ const signin = async (user) => {
         })
         return await response.json();
     } catch (e) {
-        console.log(e)
+        console.log("-----------------------------signin---------------------------------------",e)
     }
 }
 
