@@ -30,7 +30,11 @@ const Home = () => {
                 <Typography variant={"body2"} component={"p"}>
                     Welcome to The Mern Social Home Page
                 </Typography>
-                <Link to="/users">Users</Link>
+                <Link to="/users/">Users</Link>
+                <br/>
+                <Link to="/signup/">signUn</Link>
+                <br/>
+                <Link to="/signin/">signIn</Link>
             </CardContent>
         </Card>
     )
