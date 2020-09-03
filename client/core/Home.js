@@ -21,14 +21,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Home = () => {
-    const classes = useStyles();
+    const {card,media,title} = useStyles();
     return (
-        <Card className={classes.card}>
-            <Typography variant="h6" className={classes.title}>Home Page</Typography>
-            <CardMedia className={classes.media} image={homeImg} title='Well Come'/>
+        <Card className={card}>
+            <Typography variant="h6" className={title}>Home Page</Typography>
+            <CardMedia className={media} image={homeImg} title='Well Come'/>
             <CardContent>
                 <Typography variant={"body2"} component={"p"}>
-                    Welcome to The MernSocial Home Page
+                    Welcome to The Mern Social Home Page
                 </Typography>
             </CardContent>
         </Card>
