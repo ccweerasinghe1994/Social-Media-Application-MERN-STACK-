@@ -63,3 +63,52 @@ const update = async (params, credentials, user) => {
         console.log(err)
     }
 }
+
+const remove = async (params,credentials)=>{
+    try
+    {
+        let response = await fetch('/api/users'+params.userId,{
+            method:'DELETE',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+                "Authorization":'bearer'+credentials.t
+            }
+
+        })
+
+        return response.json()
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
