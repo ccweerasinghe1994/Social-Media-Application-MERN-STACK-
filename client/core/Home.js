@@ -2,7 +2,7 @@ import React from "react";
 import {makeStyles} from '@material-ui/core/styles'
 import {Card, CardContent, CardMedia, Typography} from '@material-ui/core';
 import homeImg from '../assets/a.jpg';
-
+import {Link} from 'react-router-dom'
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,6 +30,7 @@ const Home = () => {
                 <Typography variant={"body2"} component={"p"}>
                     Welcome to The Mern Social Home Page
                 </Typography>
+                <Link to="/users">Users</Link>
             </CardContent>
         </Card>
     )
